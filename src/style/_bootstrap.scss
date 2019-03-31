@@ -1,0 +1,8 @@
+$font-family-sans-serif: 'M PLUS Rounded 1c', sans-serif;
+
+@import '~bootstrap/scss/bootstrap';
+
+$sm-break: map-get($grid-breakpoints, "sm");
+$md-break: map-get($grid-breakpoints, "md");
+$lg-break: map-get($grid-breakpoints, "lg");
+$xl-break: map-get($grid-breakpoints, "xl");
