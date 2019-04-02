@@ -1,5 +1,98 @@
 
 .app-container {
+  margin: auto;
+  max-width: 900px;
+  padding: 20px;
 
+  .todo-form {
+    margin-bottom: 30px;
+
+    .filter {
+      color: $gray-600;
+      text-align: center;
+    }
+  }
+
+  .todo-list {
+    .todo-item {
+      align-items: center;
+      background: $gray-100;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding: 10px;
+      position: relative;
+
+      .todo-content {
+        color: $gray-800;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: calc(100% - 40px);
+
+      }
+
+      .btn-toggle, .btn-delete {
+        align-items: center;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        height: 28px;
+        justify-content: center;
+        width: 28px;
+
+        svg {
+          color: $white;
+          height: 14px;
+          width: 14px;
+        }
+
+        &.disabled {
+          pointer-events: none;
+        }
+      }
+
+      .btn-toggle {
+        background: $primary;
+
+        &:hover {
+          background: darken($primary, 10);
+        }
+
+        &.disabled {
+          background: lighten($primary, 20);
+        }
+      }
+
+      .btn-delete {
+        background: lighten($red, 10);
+
+        &:hover {
+          background: $red;
+        }
+
+        &.disabled {
+          background: lighten($red, 20);
+        }
+      }
+
+      &.completed {
+        .todo-content {
+          color: $gray-700;
+          text-decoration: line-through;
+          width: calc(100% - 80px);
+        }
+
+        .btn-toggle {
+          background: $gray-300;
+
+          &:hover {
+            background: $gray-500;
+          }
+        }
+      }
+    }
+  }
 }
 

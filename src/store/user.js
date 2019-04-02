@@ -1,3 +1,6 @@
+import { User } from 'radiks';
+
+
 import {userSession} from '../blockstack-config';
 
 export const USER_SIGNIN = '@user/SIGN-IN';
@@ -29,6 +32,8 @@ export const signIn = (userData) => {
     const {username} = userData;
 
     dispatch(signInAct(username));
+
+    User.createWithCurrentUser();
   }
 };
 

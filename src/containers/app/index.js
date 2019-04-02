@@ -6,10 +6,9 @@ import connect from 'react-redux/es/connect/connect';
 
 import AppPage from '../../components/pages/app'
 
-import {
-  signOut
-} from '../../store/user';
+import {signOut} from '../../store/user';
 
+import {setTitle, setFilter, addItem, fetchItems, toggleItem, deleteItem} from '../../store/todo';
 
 class AppContainer extends Component {
   render() {
@@ -17,15 +16,21 @@ class AppContainer extends Component {
   }
 }
 
-
-const mapStateToProps = ({user}) => ({
+const mapStateToProps = ({user, todo}) => ({
   user,
+  todo
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       signOut,
+      setTitle,
+      setFilter,
+      addItem,
+      fetchItems,
+      toggleItem,
+      deleteItem
     },
     dispatch
   );

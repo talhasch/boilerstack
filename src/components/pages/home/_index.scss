@@ -1,6 +1,21 @@
 .home-container {
-  max-width: 900px;
   margin: auto;
+  max-width: 900px;
   padding: 20px;
   text-align: center;
+
+  .title {
+    margin-bottom: 30px;
+  }
+
+  .sign-in {
+    .divider {
+      font-size: 95%;
+      margin: 4px 0;
+    }
+
+    .continue{
+      font-size: 95%;
+    }
+  }
 }
