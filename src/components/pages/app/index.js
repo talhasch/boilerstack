@@ -27,6 +27,11 @@ class AppPage extends Component {
     fetchItems();
   }
 
+  goHome = () => {
+    const {history} = this.props;
+    history.push('/');
+  };
+
   add = () => {
     const {addItem} = this.props;
     addItem();
@@ -73,6 +78,9 @@ class AppPage extends Component {
           <Navbar.Brand>BoilerStack</Navbar.Brand>
           <Navbar.Toggle/>
           <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="mr-auto">
+              <Nav.Link onClick={this.goHome}>Home</Nav.Link>
+            </Nav>
             <Nav className="ml-auto">
               <Nav.Link onClick={this.signOut}>Sign Out</Nav.Link>
             </Nav>
@@ -82,15 +90,25 @@ class AppPage extends Component {
           <div className="todo-form">
             <InputGroup className="mb-3">
               <FormControl
+                autoFocus
                 placeholder="Add new todo"
                 value={title}
                 onChange={this.titleChanged}
+                onKeyPress={event => {
+                  if (event.key === 'Enter') {
+                    if (inProgress || title.trim() === '') {
+                      return;
+                    }
+                    this.add();
+                  }
+                }}
               />
               <InputGroup.Append>
                 <Button disabled={title.trim() === '' || inProgress} variant="primary" onClick={this.add}>Add</Button>
               </InputGroup.Append>
             </InputGroup>
 
+            {items.size > 0 &&
             <div className="filter">
               <Form.Check
                 type="checkbox"
@@ -99,8 +117,14 @@ class AppPage extends Component {
                 onChange={this.filterChanged}
               />
             </div>
+            }
           </div>
 
+          {items.size === 0 &&
+          <div className="empty-todo-list">no items</div>
+          }
+
+          {items.size > 0 &&
           <div className="todo-list">
             {items.valueSeq().map((i) => {
               if (filter && i.attrs.completed) {
@@ -121,6 +145,7 @@ class AppPage extends Component {
               </div>
             })}
           </div>
+          }
         </div>
       </>
     )
