@@ -131,6 +131,8 @@ class AppPage extends Component {
                 return null;
               }
 
+
+
               return <div className={`todo-item ${i.attrs.completed ? 'completed' : ''}`} key={i._id}>
                 <span className="todo-content">{i.attrs.title}</span>
                 <span title="Toggle" className={`btn-toggle ${inProgress ? 'disabled' : ''}`} onClick={() => {

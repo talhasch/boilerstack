@@ -44,9 +44,13 @@ export default (state = initialState, action) => {
     }
     case ITEM_ADDED: {
       const {newItem} = action.payload;
-      return state.set('inProgress', false).set('title', '').setIn(
-        ['items', newItem._id], newItem
+
+      let items = state.get('items');
+      items = items.set(newItem._id, newItem).sort(
+        (a, b) => b.attrs.createdAt - a.attrs.createdAt
       );
+
+      return state.set('inProgress', false).set('title', '').set('items', items);
     }
     case FETCH_ITEMS: {
       return state.set('inProgress', true);
