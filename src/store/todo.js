@@ -2,7 +2,7 @@ import {Map, OrderedMap} from 'immutable';
 
 import {Todo} from '../model';
 
-import {USER_SIGNOUT} from './user';
+import {USER_SIGNOUT, USER_SIGNIN} from './user';
 
 export const SET_TITLE = '@todo/SET_TITLE';
 
@@ -85,6 +85,7 @@ export default (state = initialState, action) => {
         ['items', item._id]
       );
     }
+    case USER_SIGNIN:
     case USER_SIGNOUT: {
       return initialState;
     }

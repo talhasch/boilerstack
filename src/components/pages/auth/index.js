@@ -4,12 +4,7 @@ import {userSession} from '../../../blockstack-config';
 
 class AuthPage extends Component {
   componentDidMount() {
-    const {user, history} = this.props;
-
-    if (user) {
-      history.push('/app');
-      return;
-    }
+    const {history} = this.props;
 
     if (userSession.isSignInPending()) {
       userSession.handlePendingSignIn()

@@ -91,7 +91,7 @@ class AppPage extends Component {
             <InputGroup className="mb-3">
               <FormControl
                 autoFocus
-                placeholder="Add new todo"
+                placeholder="New todo"
                 value={title}
                 onChange={this.titleChanged}
                 onKeyPress={event => {
@@ -130,8 +130,6 @@ class AppPage extends Component {
               if (filter && i.attrs.completed) {
                 return null;
               }
-
-
 
               return <div className={`todo-item ${i.attrs.completed ? 'completed' : ''}`} key={i._id}>
                 <span className="todo-content">{i.attrs.title}</span>
